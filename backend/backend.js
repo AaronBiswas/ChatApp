@@ -20,14 +20,14 @@ app.use('/api', chatRoutes);
 
 // Serve static files in production
 if (process.env.NODE_ENV === 'production') {
-  // Serve frontend static files
-  const staticPath = join(__dirname, '..', 'dist');
-  app.use(express.static(staticPath));
+    // Serve frontend static files
+    const staticPath = join(__dirname, '..', 'dist');
+    app.use(express.static(staticPath));
 
-  // Handle SPA routing
-  app.get('*', (req, res) => {
-    res.sendFile(join(staticPath, 'index.html'));
-  });
+    // Handle SPA routing
+    app.get('*', (req, res) => {
+        res.sendFile(join(staticPath, 'index.html'));
+    });
 }
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
